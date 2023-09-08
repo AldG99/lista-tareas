@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  max-width: 1550px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -32,11 +32,17 @@ input[type="text"],
 select,
 .search-input {
   width: 100%;
-  max-width: 400px; /* Ancho máximo ajustado */
+  max-width: 450px; /* Ancho máximo ajustado */
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.search-task {
+  width: 100%;
+  margin-top: 25px;
+  max-width: 450px; /* Ancho máximo ajustado */
 }
 
 /* Estilo para las barras de selección de prioridad y categoría */
@@ -71,20 +77,37 @@ button:hover {
   padding: 0;
 }
 
+/* Estilos para los elementos de la lista de tareas */
 .task-item {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 10px;
   padding: 10px;
-  display: flex;
-  justify-content: space-between;
+  display: grid; /* Mantenemos la cuadrícula para la columna de "Tarea" */
+  grid-template-columns: 1fr; /* Solo una columna para "Tarea" */
   align-items: center;
+  transition: background-color 0.3s ease; /* Agregar una transición suave al color de fondo */
 }
 
-.task-actions {
-  display: flex;
-  gap: 10px;
+/* Estilo para limitar el ancho de la columna de "Tarea" */
+.task-value {
+  flex: 1; /* Dejar que el valor de Tarea ocupe todo el espacio disponible */
+  max-width: 100%; /* Ancho máximo del 100% para adaptarse al contenido */
+}
+
+/* Estilos para las etiquetas y valores de "Prioridad" y "Categoría" */
+.task-label,
+.task-value-priority,
+.task-value-category {
+  display: flex; /* Utilizamos flexbox para mostrar verticalmente */
+  align-items: center; /* Centrar verticalmente los elementos */
+  margin-bottom: 5px; /* Agregar espacio entre las etiquetas y los valores */
+}
+
+.task-label {
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 /* Estilos para la lista de tareas */
@@ -94,19 +117,20 @@ button:hover {
 }
 
 .task-item {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease; /* Agregar una transición suave al color de fondo */
+  transition: background-color 0.3s ease;
 }
 
 .task-item:hover {
-  background-color: #f2f2f2; /* Cambiar el color de fondo al pasar el cursor */
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .task-actions {
@@ -114,19 +138,34 @@ button:hover {
   gap: 10px;
 }
 
-/* Estilos para los botones en la lista de tareas */
-.task-button {
-  background-color: #17a2b8;
-  color: #fff;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Agregar una transición suave al color de fondo de los botones */
+.task-info {
+  display: flex;
+  flex-direction: column; /* Muestra la información en columnas */
+  align-items: flex-start;
 }
 
-.task-button:hover {
-  background-color: #117a8b; /* Cambiar el color de fondo al pasar el cursor */
+.task-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Estilos para los botones en la lista de tareas */
+.edit-button,
+.delete-button {
+  background-color: transparent;
+  color: #007bff;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: scale(1.05);
 }
 
 /* Estilos para el campo de búsqueda */
@@ -137,21 +176,4 @@ button:hover {
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-/* Estilos para los botones en la lista de tareas */
-.edit-button {
-  background-color: #17a2b8;
-}
-
-.edit-button:hover {
-  background-color: #117a8b;
-}
-
-.delete-button {
-  background-color: #dc3545;
-}
-
-.delete-button:hover {
-  background-color: #bd2130;
 }

@@ -5,7 +5,7 @@ function App() {
   // Estados iniciales
   const initialTaskState = {
     text: '',
-    priority: 'medium',
+    priority: 'media',
     category: 'general',
     dueDate: null,
   };
@@ -48,14 +48,14 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className='container'>
       <h1>Lista de Tareas (To-Do List)</h1>
       <div>
         {/* Formulario de entrada de tareas */}
-        <div className="task-input-form">
+        <div className='task-input-form'>
           <input
-            type="text"
-            placeholder="Nueva tarea"
+            type='text'
+            placeholder='Nueva tarea'
             value={newTask}
             onChange={(e) => {
               if (e.target.value.length <= 40) {
@@ -66,33 +66,33 @@ function App() {
           />
 
           <select
-            className="select-prioridad"
+            className='select-prioridad'
             onChange={(e) => setTaskPriority(e.target.value)}
             value={taskPriority}
           >
-            <option value="high">Alta prioridad</option>
-            <option value="medium">Prioridad media</option>
-            <option value="low">Baja prioridad</option>
+            <option value='alta'>Alta prioridad</option>
+            <option value='media'>Prioridad media</option>
+            <option value='baja'>Baja prioridad</option>
           </select>
 
           <select
-            className="select-categoria"
+            className='select-categoria'
             onChange={(e) => setTaskCategory(e.target.value)}
             value={taskCategory}
           >
-            <option value="personal">Personal</option>
-            <option value="work">Trabajo</option>
-            <option value="shopping">Compras</option>
+            <option value='personal'>Personal</option>
+            <option value='trabajo'>Trabajo</option>
+            <option value='compras'>Compras</option>
           </select>
 
           <button onClick={addTask}>Agregar</button>
         </div>
 
         {/* Barra de búsqueda */}
-        <div className="search-task">
+        <div className='search-task'>
           <input
-            type="text"
-            placeholder="Buscar tareas"
+            type='text'
+            placeholder='Buscar tareas'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -100,38 +100,38 @@ function App() {
       </div>
 
       {/* Lista de tareas */}
-      <ul className="task-list">
+      <ul className='task-list'>
         {tasks
           .filter((task) =>
             task.text.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((task, index) => (
-            <li className="task-item" key={index}>
-              <table className="task-table">
+            <li className='task-item' key={index}>
+              <table className='task-table'>
                 <tbody>
                   <tr>
-                    <td className="task-label">Tarea:</td>
-                    <td className="task-value">{task.text}</td>
+                    <td className='task-label'>Tarea:</td>
+                    <td className='task-value'>{task.text}</td>
                   </tr>
                   <tr>
-                    <td className="task-label">Prioridad:</td>
-                    <td className="task-value">{task.priority}</td>
+                    <td className='task-label'>Prioridad:</td>
+                    <td className='task-value'>{task.priority}</td>
                   </tr>
                   <tr>
-                    <td className="task-label">Categoría:</td>
-                    <td className="task-value">{task.category}</td>
+                    <td className='task-label'>Categoría:</td>
+                    <td className='task-value'>{task.category}</td>
                   </tr>
                 </tbody>
               </table>
 
               {/* Acciones de la tarea */}
-              <div className="task-actions">
-                <button className="delete-button" onClick={() => deleteTask(index)}>
+              <div className='task-actions'>
+                <button className='delete-button' onClick={() => deleteTask(index)}>
                   Eliminar
                 </button>
 
                 <button
-                  className="edit-button"
+                  className='edit-button'
                   onClick={() => {
                     const updatedText = prompt('Editar tarea:', task.text);
                     if (updatedText !== null) {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.scss';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -36,7 +37,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Lista de Tareas (To-Do List)</h1>
       <div>
         <input
@@ -46,6 +47,7 @@ function App() {
           onChange={(e) => setNewTask(e.target.value)}
         />
         <select
+          className="select-prioridad" // Agrega la clase CSS a la barra de selección de prioridad
           onChange={(e) => setTaskPriority(e.target.value)}
           value={taskPriority}
         >
@@ -54,6 +56,7 @@ function App() {
           <option value="low">Baja prioridad</option>
         </select>
         <select
+          className="select-categoria" // Agrega la clase CSS a la barra de selección de categoría
           onChange={(e) => setTaskCategory(e.target.value)}
           value={taskCategory}
         >

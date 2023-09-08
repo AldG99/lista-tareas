@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Lista de Tareas (To-Do List)</h1>
+      <h1>Lista de Tareas</h1>
       <div>
         <input
           type="text"
@@ -47,7 +47,7 @@ function App() {
           onChange={(e) => setNewTask(e.target.value)}
         />
         <select
-          className="select-prioridad" // Agrega la clase CSS a la barra de selección de prioridad
+          className="select-prioridad"
           onChange={(e) => setTaskPriority(e.target.value)}
           value={taskPriority}
         >
@@ -56,7 +56,7 @@ function App() {
           <option value="low">Baja prioridad</option>
         </select>
         <select
-          className="select-categoria" // Agrega la clase CSS a la barra de selección de categoría
+          className="select-categoria"
           onChange={(e) => setTaskCategory(e.target.value)}
           value={taskCategory}
         >
@@ -74,19 +74,25 @@ function App() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <ul>
+      <ul className="task-list">
         {tasks
           .filter((task) =>
             task.text.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((task, index) => (
-            <li key={index}>
+            <li className="task-item" key={index}>
               <span>{task.text}</span>
-              <span> | Prioridad: {task.priority}</span>
-              <span> | Categoría: {task.category}</span>
-              {task.dueDate && <span> | Vence el: {task.dueDate}</span>}
-              <button onClick={() => deleteTask(index)}>Eliminar</button>
+              <span>Prioridad: {task.priority}</span>
+              <span>Categoría: {task.category}</span>
+              {task.dueDate && <span>Vence el: {task.dueDate}</span>}
               <button
+                className="task-button"
+                onClick={() => deleteTask(index)}
+              >
+                Eliminar
+              </button>
+              <button
+                className="task-button"
                 onClick={() => {
                   const updatedText = prompt('Editar tarea:', task.text);
                   if (updatedText !== null) {
@@ -97,7 +103,7 @@ function App() {
                 Editar
               </button>
             </li>
-          ))}
+        ))}
       </ul>
     </div>
   );
